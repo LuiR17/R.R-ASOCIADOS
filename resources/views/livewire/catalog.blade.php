@@ -144,6 +144,25 @@
                     </div>
                 </div>
 
+                <!-- Mobile Categories (Hidden on Desktop) -->
+                <div class="mt-md md:hidden flex gap-2 overflow-x-auto pb-2 -mx-margin-mobile px-margin-mobile snap-x" style="scrollbar-width: none;">
+                    <button 
+                        wire:click="selectCategory(null)" 
+                        class="shrink-0 snap-start px-4 py-2 rounded-full text-sm transition-all border {{ is_null($selectedCategory) ? 'bg-primary text-on-primary font-bold border-primary shadow-sm' : 'bg-surface-container-lowest text-on-surface-variant border-outline-variant hover:bg-surface-container-low' }}"
+                    >
+                        Todos los Productos
+                    </button>
+                    @foreach($this->categories as $cat)
+                        <button 
+                            wire:click="selectCategory({{ $cat->id }})" 
+                            class="shrink-0 snap-start px-4 py-2 rounded-full text-sm transition-all border flex items-center gap-1.5 {{ $selectedCategory === $cat->id ? 'bg-primary text-on-primary font-bold border-primary shadow-sm' : 'bg-surface-container-lowest text-on-surface-variant border-outline-variant hover:bg-surface-container-low' }}"
+                        >
+                            <span class="material-symbols-outlined text-[16px]">{{ $cat->icon }}</span>
+                            {{ $cat->name }}
+                        </button>
+                    @endforeach
+                </div>
+
                 <!-- Active Filters Notification Bar -->
                 @if(!empty($search) || !is_null($selectedCategory) || !empty($selectedBadge))
                     <div class="mt-md p-3 bg-surface-container-low border border-primary/20 rounded-lg flex items-center justify-between text-xs text-on-surface-variant">

@@ -59,14 +59,25 @@ class Catalog extends Component
     #[Computed]
     public function categories()
     {
-        return Cache::remember('catalog_categories_list', 3600, function () {
-            return Category::where('is_active', true)
-                ->withCount(['products' => function ($q) {
-                    $q->where('is_active', true);
-                }])
-                ->orderBy('sort_order')
-                ->get();
-        });
+        $categories = Cache::get('catalog_categories_list');
+
+        if ($categories && $categories->count() > 0) {
+            return $categories;
+        }
+
+        $categories = Category::where('is_active', true)
+            ->withCount(['products' => function ($q) {
+                $q->where('is_active', true);
+            }])
+            ->orderBy('sort_order')
+            ->get();
+
+        // Only cache non-empty results to avoid caching pre-seed empty state
+        if ($categories->count() > 0) {
+            Cache::put('catalog_categories_list', $categories, 3600);
+        }
+
+        return $categories;
     }
 
     public function render()

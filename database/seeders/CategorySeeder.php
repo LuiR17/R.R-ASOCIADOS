@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Category;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Cache;
 
 class CategorySeeder extends Seeder
 {
@@ -78,5 +79,8 @@ class CategorySeeder extends Seeder
         foreach ($categories as $cat) {
             Category::updateOrCreate(['slug' => $cat['slug']], $cat);
         }
+
+        // Clear cached categories so the public catalog picks up changes immediately
+        Cache::forget('catalog_categories_list');
     }
 }

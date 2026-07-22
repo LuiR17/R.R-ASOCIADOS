@@ -67,7 +67,7 @@ class Catalog extends Component
 
         $categories = Category::where('is_active', true)
             ->withCount(['products' => function ($q) {
-                $q->where('is_active', true);
+                $q->where('is_active', true)->where('is_service', false);
             }])
             ->orderBy('sort_order')
             ->get();

@@ -176,7 +176,9 @@
                                     <img 
                                         src="{{ $product->image_url }}" 
                                         alt="{{ $product->name }}" 
-                                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                        oncontextmenu="return false;"
+                                        draggable="false"
+                                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 select-none"
                                         loading="lazy"
                                     >
                                     <div class="absolute top-4 left-0 bg-primary w-1.5 h-8 rounded-r-full"></div>
@@ -310,7 +312,7 @@
 
                 <div class="flex flex-col md:flex-row gap-lg">
                     <div class="w-full md:w-1/2 h-64 md:h-auto rounded-lg overflow-hidden bg-surface-container">
-                        <img src="{{ $activeProductModal->image_url }}" alt="{{ $activeProductModal->name }}" class="w-full h-full object-cover">
+                        <img src="{{ $activeProductModal->image_url }}" alt="{{ $activeProductModal->name }}" oncontextmenu="return false;" draggable="false" class="w-full h-full object-cover select-none">
                     </div>
 
                     <div class="w-full md:w-1/2 flex flex-col justify-between">

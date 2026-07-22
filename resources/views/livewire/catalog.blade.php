@@ -142,28 +142,6 @@
                             Sistemas hidráulicos de ingeniería de precisión para aplicaciones industriales pesadas y equipo móvil. Distribución y soporte técnico especializado por R.R Y Asociados | Hidraulic.
                         </p>
                     </div>
-
-                    <!-- Filter Badges -->
-                    <div class="flex flex-wrap gap-2">
-                        <button 
-                            wire:click="filterBadge('Best Seller')" 
-                            class="px-4 py-2 rounded-full font-label-caps text-label-caps flex items-center gap-1 transition-all {{ $selectedBadge === 'Best Seller' ? 'bg-primary text-on-primary font-bold' : 'bg-surface-container-highest text-on-surface-variant hover:bg-outline-variant' }}"
-                        >
-                            Best Seller
-                        </button>
-                        <button 
-                            wire:click="filterBadge('Heavy Duty')" 
-                            class="px-4 py-2 rounded-full font-label-caps text-label-caps flex items-center gap-1 transition-all {{ $selectedBadge === 'Heavy Duty' ? 'bg-primary text-on-primary font-bold' : 'bg-surface-container-highest text-on-surface-variant hover:bg-outline-variant' }}"
-                        >
-                            Heavy Duty
-                        </button>
-                        <button 
-                            wire:click="filterBadge('En Stock')" 
-                            class="px-4 py-2 rounded-full font-label-caps text-label-caps flex items-center gap-1 transition-all {{ $selectedBadge === 'En Stock' ? 'bg-primary text-on-primary font-bold' : 'bg-surface-container-highest text-on-surface-variant hover:bg-outline-variant' }}"
-                        >
-                            En Stock
-                        </button>
-                    </div>
                 </div>
 
                 <!-- Active Filters Notification Bar -->

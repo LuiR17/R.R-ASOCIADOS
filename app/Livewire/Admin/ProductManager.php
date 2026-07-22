@@ -8,14 +8,25 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Livewire\WithPagination;
 
 class ProductManager extends Component
 {
-    use WithFileUploads;
+    use WithFileUploads, WithPagination;
 
     // Filters
     public string $search = '';
     public ?int $filterCategory = null;
+
+    public function updatingSearch(): void
+    {
+        $this->resetPage();
+    }
+
+    public function updatingFilterCategory(): void
+    {
+        $this->resetPage();
+    }
 
     // Form fields
     public ?int $productId = null;
